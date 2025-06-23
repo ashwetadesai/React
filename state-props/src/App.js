@@ -51,11 +51,11 @@ function Flashcards() {
     <div className="flashcards">
       {questions.map((que) => (
         <div
-        key={que.id}
-          onClick={()=>handleClick(que.id)}
+          key={que.id}
+          onClick={() => handleClick(que.id)}
           className={que.id === selectedid ? "selected" : ""}
         >
-          <p>{que.id ===  selectedid ? que.answer : que.question}</p>
+          <p>{que.id === selectedid ? que.answer : que.question}</p>
         </div>
       ))}
     </div>
