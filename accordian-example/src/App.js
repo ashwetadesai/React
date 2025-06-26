@@ -27,20 +27,24 @@ export default function App(){
 }
 
 function Accordian(){
+
+  const [curopen, setCurOpen] = useState(null);
   return(
     <div className="accordion">
       {faqs.map((el,i)=> (
-        <Accordianitem title={el.title} text={el.text} num={i} key={el.title}/>
+        <Accordianitem title={el.title} text={el.text} num={i} key={el.title} curopen={curopen} onopen={setCurOpen}/>
       ))}
     </div>
   )
 }
 
-function Accordianitem({title,text,num}){
-  const [isOpen, setOpen] = useState(false);
+function Accordianitem({title,text,num,curopen,onopen}){
+
+  const isOpen = num === curopen;
+  // const [isOpen, setOpen] = useState(false);
 
   function setIsOpen(){
-    setOpen((isOpen)=> !isOpen)
+    onopen(isOpen ? null : num)
   }
 return(
 <div onClick={setIsOpen} className={`item ${isOpen ? "open" : ''}`}>
